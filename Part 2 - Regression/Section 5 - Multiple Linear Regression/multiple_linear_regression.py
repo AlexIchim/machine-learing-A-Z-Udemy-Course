@@ -43,5 +43,21 @@ y_pred = regressor.predict(X_test)
 
 
 # Building the optimal model using Backward Elimination
-import statsmode.formula.api as sm
+import statsmodels.formula.api as sm
 
+# Add column of 1 to features X for contant value.
+num_rows, num_cols = X.shape
+X = np.append(arr = np.ones((num_rows, 1)).astype(int), values = X, axis = 1)
+
+# Optimal matrix of features, independent variables that significally impact the profit.
+X_opt = X[:, [0, 1, 2, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0, 1, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
+
+X_opt = X[:, [0, 3, 4, 5]]
+regressor_OLS = sm.OLS(endog = y, exog = X_opt).fit()
+regressor_OLS.summary()
