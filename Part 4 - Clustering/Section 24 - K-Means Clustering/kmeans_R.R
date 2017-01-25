@@ -28,4 +28,8 @@ clusplot(X,
          shade = TRUE,
          color = TRUE,
          labels = 2,
-         plotchar = FALSE)
+         plotchar = FALSE,
+         span = TRUE,
+         main = paste('Cluster of clients'),
+         xlab = "Annual Income",
+         ylabe = "Spending Score")
